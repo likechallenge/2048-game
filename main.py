@@ -4,7 +4,6 @@ import random
 
 class Board:
     bg_color={
-
         '2': '#eee4da',
         '4': '#ede0c8',
         '8': '#edc850',
@@ -33,7 +32,7 @@ class Board:
 
     def __init__(self):
         self.window=Tk()
-        self.window.title('ProjectGurukul 2048 Game')
+        self.window.title('2048 Game')
         self.gameArea=Frame(self.window,bg= 'azure3')
         self.board=[]
         self.gridCell=[[0]*4 for i in range(4)]

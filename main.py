@@ -17,7 +17,7 @@ class Board:
         '2048': '#edc22e',
     }
     color={
-         '2': '#776e65',
+        '2': '#776e65',
         '4': '#f9f6f2',
         '8': '#f9f6f2',
         '16': '#f9f6f2',
@@ -126,6 +126,9 @@ class Game:
         self.gamepanel=gamepanel
         self.end=False
         self.won=False
+        self.end2048=False
+        self.end4096=False
+        self.end8192=False
 
     def start(self):
         self.gamepanel.random_cell()
@@ -184,14 +187,36 @@ class Game:
         flag=0
         for i in range(4):
             for j in range(4):
-                if(self.gamepanel.gridCell[i][j]==2048):
+                if(self.gamepanel.gridCell[i][j]==20480):
                     flag=1
+                    break
+                elif(self.gamepanel.gridCell[i][j]==4096):
+                    flag=2
+                    break
+                elif(self.gamepanel.gridCell[i][j]==8192):
+                    flag=2
                     break
 
         if(flag==1): #found 2048
+            # self.won=True
+            if(self.end2048 == False):
+                messagebox.showinfo('2048', message='You Wonnn!!')
+                print("2048 won")
+            self.end2048=True
+            return
+        if(flag==2): #found 4096
+            # self.won=True
+            if(self.end4096 == False):
+                messagebox.showinfo('4096', message='You Wonnn!!')
+                print("4096 won")
+            self.end4096=True
+            return
+        if(flag==3): #found 8192
             self.won=True
-            messagebox.showinfo('2048', message='You Wonnn!!')
-            print("won")
+            if(self.end8192 == False):
+                messagebox.showinfo('8192', message='You Wonnn!!')
+                print("8192 won")
+            self.end8192=True
             return
 
         for i in range(4):
